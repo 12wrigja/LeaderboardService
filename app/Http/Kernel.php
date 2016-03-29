@@ -48,5 +48,7 @@ class Kernel extends HttpKernel
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+        'appkey' => \App\Http\Middleware\CheckForAppKey::class,
+        'device.registered' => \App\Http\Middleware\RequireDeviceID::class
     ];
 }
