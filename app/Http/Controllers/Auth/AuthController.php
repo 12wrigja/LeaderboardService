@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use Illuminate\Http\Request as Req;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -69,4 +70,17 @@ class AuthController extends Controller
             'email' => $data['email']
         ]);
     }
+
+    public function postRegister(Req $request)
+    {
+        $response = $this->register($request);
+        if($request->wantsJson()){
+            $registered = $response->getStatusCode() != 404;
+            return response()->json(['registered'=> $registered],$response->getStatusCode());
+        } else {
+            return $response;
+        }
+    }
+
+
 }

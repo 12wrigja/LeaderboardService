@@ -6,6 +6,11 @@ Route::group(['prefix'=>'api','middleware'=>['appkey']],function(){
     Route::post('devices/login','DeviceController@signInWithCurrentDevice');
     Route::post('devices/logout','DeviceController@logOutOfCurrentDevice');
     Route::post('leaderboard','LeaderboardController@index');
-    Route::post('register','Auth\AuthController@register');
+    Route::post('register',function(){
+        $request = request();
+        $response =  (new \App\Http\Controllers\Auth\AuthController)->postRegister($request);
+        dd($response);
+        return $response;
+    });
     Route::post('leaderboard/submit','LeaderboardController@addToLeaderboard');
 });
