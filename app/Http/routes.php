@@ -9,7 +9,6 @@ Route::group(['prefix'=>'api','middleware'=>['appkey']],function(){
     Route::post('register',function(){
         $request = request();
         $response =  (new \App\Http\Controllers\Auth\AuthController)->postRegister($request);
-        dd($response);
         return $response;
     });
     Route::post('leaderboard/submit','LeaderboardController@addToLeaderboard');
