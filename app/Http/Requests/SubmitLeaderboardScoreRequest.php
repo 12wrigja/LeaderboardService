@@ -23,7 +23,7 @@ class SubmitLeaderboardScoreRequest extends Request
     {
         return [
             'score'=>'required|integer|min:0',
-            'match_type'=>'required|in:1m,5m,10m'
+            'match_type'=>'required|in:30s-AR,1m-AR,3m-AR,30s-NAR,1m-NAR,3m-NAR'
         ];
     }
 }

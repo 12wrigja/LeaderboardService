@@ -39,7 +39,8 @@ class LeaderboardTransformer extends TransformerAbstract
         return [
             'score'=>$resource->score,
             'username'=>$username,
-            'uploaded_at'=>$resource->created_at->toDateTimeString()
+            'uploaded_at'=>$resource->created_at->toDateTimeString(),
+            'match_type'=>$resource->match_type
         ];
     }
 
