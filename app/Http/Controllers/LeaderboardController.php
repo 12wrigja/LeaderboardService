@@ -20,7 +20,11 @@ class LeaderboardController extends Controller
     }
 
     public function index(){
-        $leaderboardResults = Leaderboard::orderBy('score','DESC')->paginate(100);
+        if(request()->has('type')){
+            $leaderboardResults = Leaderboard::where('match_type','=',request()->get('type'))->orderBy('score','DESC')->paginate(100);
+        } else {
+            $leaderboardResults = Leaderboard::orderBy('score','DESC')->paginate(100);
+        }
         return Fractal::collection($leaderboardResults, new LeaderboardTransformer())->responseJson(200);
     }
 
